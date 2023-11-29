@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steganography Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        img {
+            max-width: 100%; 
+            height: auto; 
+            display: block; 
+            margin: 0 auto; 
+        }
+    </style>
+</head>
+<body>
+    <div class="stegano-container">
+        <div class="stegano-form fade-in-element">
+            <h1>Steganography Result</h1>
+            <a href="{{ image_path }}" download="secret_image">
+                <img src="{{ image_path }}" alt="Secret Image">
+            </a>
+        </div>
+    </div>
+</body>
+</html>

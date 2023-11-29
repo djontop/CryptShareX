@@ -1,0 +1,98 @@
+},
+        [7] = {
+            name = "medbag",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 7,
+
+},
+        [8] = {
+            name = "tweezers",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 8,
+},
+        [9] = {
+            name = "medikit",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 9,
+},
+        [10] = {
+            name = "suturekit",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 10,
+      
+},
+        [11] = {
+            name = "burncream",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 11,
+},
+        [12] = {
+            name = "defib",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 12,
+      
+},
+        [13] = {
+            name = "bodybag",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 13,
+      
+},
+        [14] = {
+            name = "sedative",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 14,
+
+},
+        [15] = {
+            name = "stretcher",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 15,
+
+
+},
+        [16] = {
+            name = "wheelchair",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 16,
+
+},
+        [17] = {
+            name = "recoveredbullet",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 17,
+
+

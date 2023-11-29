@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Decryption</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="index-container">
+        <div class="index-form">
+            <h1>File Decryption</h1>
+            <form action="/decrypt" method="post" enctype="multipart/form-data">
+                <label for="file">Choose an encrypted file:</label>
+                <input type="file" name="file" id="file" accept=".txt" required>
+                <label for="decryption_choice">Select decryption option:</label>
+                <select name="decryption_choice" id="decryption_choice" required>
+                    <option value="1">Decrypt with private key</option>
+                    <option value="2">Decrypt with QR code</option>
+                </select>
+
+                <div id="privateKeySection">
+                    <label for="private_key">Enter private key:</label>
+                    <input type="text" name="private_key" id="private_key">
+                </div>
+
+                <div id="qrCodeSection" style="display: none;">
+                    <label for="qr_code">Upload QR code:</label>
+                    <input type="file" name="qr_code" id="qr_code" accept=".png, .jpg, .jpeg">
+                </div>
+
+                <button type="submit">Decrypt</button>
+            </form>
+            <a href="/">Back to Home</a>
+
+            <script>
+                document.getElementById('decryption_choice').addEventListener('change', function () {
+                    var privateKeySection = document.getElementById('privateKeySection');
+                    var qrCodeSection = document.getElementById('qrCodeSection');
+
+                    if (this.value === '1') {
+                        privateKeySection.style.display = 'block';
+                        qrCodeSection.style.display = 'none';
+                    } else if (this.value === '2') {
+                        privateKeySection.style.display = 'none';
+                        qrCodeSection.style.display = 'block';
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html>
