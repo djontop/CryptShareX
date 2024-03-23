@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption Success</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="success-message">
+        <h1>Encryption Successful</h1>
+        <p>Key: {{ key }}</p>
+        <p>Filename: {{ filename }}</p>
+        {% if qr_code %}
+            <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+        {% endif %}
+        <p><a href="{{ gofile_link }}" target="_blank">Download from GoFile</a></p>
+    </div>
+</body>
+</html>

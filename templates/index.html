@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Encryption</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="index-container">
+        <div class="index-form">
+            <h1>Document Encryption</h1>
+            <form action="/upload" method="post" enctype="multipart/form-data" id="documentEncryptionForm">
+                <label for="file">Choose a text file:</label>
+                <input type="file" name="file" id="file" required>
+                <label for="encryption_choice">Select encryption option:</label>
+                <select name="encryption_choice" id="encryption_choice" onchange="toggleForms()" required>
+                    <option value="1">Encrypt</option>
+                    <option value="2">Encrypt with Private Key</option>
+                    <option value="3">Encrypt with QR Code</option>
+                    <option value="4">Steganography</option>
+                </select>
+                <input type="submit" value="Encrypt">
+            </form>
+
+            <!-- Steganography Form -->
+            <div id="steganographyForm" style="display: none;">
+                <h2>Steganography</h2>
+                <form action="/encode" method="post" enctype="multipart/form-data">
+                    <label for="image">Select Image:</label>
+                    <input type="file" name="image" accept="image/*" required>
+                    <br>
+                    <label for="message">Enter Message:</label>
+                    <input type="text" name="message" required>
+                    <br>
+                    <button type="submit">Encode</button>
+                </form>
+
+                <h2>Steganography Decode</h2>
+                <form action="/decode_result" method="post" enctype="multipart/form-data">
+                    <label for="decode_image">Select Image:</label>
+                    <input type="file" name="image" accept="image/*" required>
+                    <br>
+                    <button type="submit">Decode</button>
+                </form>
+
+                <h2>Back to Encryption</h2>
+                <select name="back_to_encryption" onchange="backToEncryption(this.value)">
+                    <option value="" selected disabled>Select Encryption Option</option>
+                    <option value="1">Encrypt</option>
+                    <option value="2">Encrypt with Private Key</option>
+                    <option value="3">Encrypt with QR Code</option>
+                </select>
+            </div>
+
+            <form action="/decrypt" method="get" id="documentDecryptionForm">
+                <button type="submit">Decrypt</button>
+            </form>
+            <p>{{ message }}</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleForms() {
+            var encryptionChoice = document.getElementById('encryption_choice').value;
+            var documentEncryptionForm = document.getElementById('documentEncryptionForm');
+            var documentDecryptionForm = document.getElementById('documentDecryptionForm');
+            var steganographyForm = document.getElementById('steganographyForm');
+
+            if (encryptionChoice === '4') {
+                documentEncryptionForm.style.display = 'none';
+                documentDecryptionForm.style.display = 'none';
+                steganographyForm.style.display = 'block';
+            } else {
+                documentEncryptionForm.style.display = 'block';
+                documentDecryptionForm.style.display = 'block';
+                steganographyForm.style.display = 'none';
+            }
+        }
+
+        function backToEncryption(selectedOption) {
+            var encryptionChoiceSelect = document.getElementById('encryption_choice');
+            encryptionChoiceSelect.value = selectedOption;
+            toggleForms();
+        }
+    </script>
+</body>
+</html>

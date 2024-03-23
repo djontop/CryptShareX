@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encryption Success</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="stegano-container">
+        <div class="stegano-form">
+            <h1>Encryption Successful</h1>
+            <p>File has been encrypted successfully.</p>
+
+            {% if key %}
+                <p>Your encryption key is: <span id="hidden-data">{{ key }}</span></p>
+            {% endif %}
+
+            {% if gofile_link %}
+                <p>Shareable GoFile Link: 
+                    <span id="gofile-link">{{ gofile_link }}</span>
+                    <button onclick="copyToClipboard('gofile-link')">Copy</button>
+                </p>
+            {% endif %}
+
+            {% if qr_code %}
+                <p>QR Code for Private Key:</p>
+                <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+            {% endif %}
+
+            <a href="/">Back to Home</a>
+            <a href="{{ url_for('download', filename=filename) }}">Download Encrypted File</a>
+
+            <script>
+                function copyToClipboard(elementId) {
+                    var copyText = document.getElementById(elementId);
+                    var range = document.createRange();
+                    range.selectNode(copyText);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                    document.execCommand("copy");
+                    window.getSelection().removeAllRanges();
+                    alert("Link copied to clipboard!");
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>
+
+

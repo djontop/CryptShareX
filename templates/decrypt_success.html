@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decryption Success</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="stegano-container">
+        <div class="stegano-form">
+            <h1>Decryption Successful</h1>
+            <p>File has been decrypted successfully. You can now download the decrypted file or return to the home page.</p>
+            <a href="{{ url_for('download', filename=filename) }}">Download Decrypted File</a>
+            
+            {% if gofile_link %}
+                <br>
+                <p>Shareable GoFile Link: 
+                    <span id="gofile-link">{{ gofile_link }}</span>
+                    <button onclick="copyToClipboard('gofile-link')">Copy</button>
+                </p>
+            {% endif %}
+
+            <br>
+            <a href="/">Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            var copyText = document.getElementById(elementId);
+            var range = document.createRange();
+            range.selectNode(copyText);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+            alert("Link copied to clipboard!");
+        }
+    </script>
+</body>
+</html>
